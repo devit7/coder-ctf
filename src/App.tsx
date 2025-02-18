@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "@/components/ui/button"
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
       <p className="text-center mt-5">
         Edit <code>src/App.tsx</code> and save to reload.
       </p>
+      <Button>Button</Button>
     </>
     );
 };
