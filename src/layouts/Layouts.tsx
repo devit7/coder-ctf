@@ -9,9 +9,11 @@ const Layouts: React.FC = () => {
         <>
             <div className="bg-[#050516] h-screen w-full text-white">
                 <Navigation />
-                <main>
-                    <Outlet />
-                </main>
+                <div className="px-16  ">
+                    <main className=" pt-16 h-screen border-x border-dashed border-gray-700">
+                        <Outlet />
+                    </main>
+                </div>
             </div>
         </>
     );

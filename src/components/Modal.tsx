@@ -33,7 +33,7 @@ const Modal: React.FC<ModalProps> = ({ children }) => {
                 <Tabs className="">
                     <TabsList className="w-full rounded-md">
                         <TabsTrigger className="w-full rounded-md" value="chall">Chall</TabsTrigger>
-                        <TabsTrigger className="w-full rounded-md" value="solve">Solve</TabsTrigger>
+                        <TabsTrigger className="w-full rounded-md" value="solve">Solve (12)</TabsTrigger>
                     </TabsList>
                     <TabsContent defaultChecked value="chall" >
                         <div className="flex flex-col gap-4 mt-5 min-h-[200px]">
@@ -77,15 +77,15 @@ const Modal: React.FC<ModalProps> = ({ children }) => {
                     </TabsContent>
                     <TabsContent value="solve">
                         <div className="flex flex-col gap-4 mt-5 min-h-[200px] max-h-[400px] overflow-y-auto">
-                            <table className="w-full ">
-                                <tr className="text-left  py-2 bg-zinc-800">
+                            <table className="w-full text-center ">
+                                <tr className="  py-2 bg-zinc-800">
                                     <th>Rank</th>
                                     <th>Name</th>
                                     <th>Date</th>
                                 </tr>
-                                <tr className="border-b border-gray-500">
+                                <tr className="border-b  border-gray-500">
                                     <td>1</td>
-                                    <td className="py-2 max-w-[150px] truncate pr-1">Smith dwadwa dwa dwa dwad dwad dwadaw</td>
+                                    <td className="py-2  max-w-[150px] truncate pr-1">Smith dwadwa dwa dwa dwad dwad dwadaw</td>
                                     <td>21/12/2024</td>
                                 </tr>
                                 <tr className="border-b border-gray-500">

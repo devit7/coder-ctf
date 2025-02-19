@@ -6,7 +6,14 @@ import { Label } from "@/components/ui/label"
 const Sidebar = () => {
     return (
         <>
-            <div className=" flex text-white font-semibold flex-col gap-2 w-full h-[50%] ">
+            <div className="text-white font-semibold text-4xl ">
+                Challenges
+            </div>
+            <div className="flex mt-10 items-center gap-2">
+                <Checkbox id="test" />
+                <Label htmlFor="" className=" " >Hide Solve</Label>
+            </div>
+            <div className=" mt-4 flex text-white font-semibold flex-col gap-2 w-full  ">
                 <Label className=" text-xl" >Categories</Label>
                 <div className="flex items-center gap-2">
                     <Checkbox id="test" />
@@ -25,9 +32,6 @@ const Sidebar = () => {
                     <Label htmlFor="test3" className=" " >Binary</Label>
                 </div>
 
-            </div>
-            <div className=" flex flex-col  w-full h-[50%] ">
-                {/*  */}
             </div>
         </>
     );

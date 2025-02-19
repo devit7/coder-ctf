@@ -4,15 +4,13 @@ import ChallList from "@/components/ChallList";
 const Challenges = () => {
     return (
         <>
-            <div className="  flex w-full flex-col  p-10">
-                <div className="text-white font-semibold text-4xl">
-                    Challenges
-                </div>
-                <div className="flex mt-10">
-                    <div className="flex flex-col  w-[350px]">
+            <div className="  flex w-full flex-col h-full ">
+                
+                <div className="flex  h-full ">
+                    <div className="flex flex-col p-10 border-r h-full border-dashed border-zinc-700 w-[350px]">
                         <Sidebar />
                     </div>
-                    <div className="  text-gray-300 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full ">
+                    <div className=" overflow-y-auto p-10 text-gray-300 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full ">
                         <ChallList />
                     </div>
                 </div>
