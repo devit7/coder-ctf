@@ -7,7 +7,7 @@ const Challenges = () => {
             <div className="  flex w-full flex-col h-full ">
                 
                 <div className="flex  h-full ">
-                    <div className="flex flex-col p-10 border-r h-full border-dashed border-zinc-700 w-[350px]">
+                    <div className="flex flex-col p-10 border-r h-full border-dashed border-gray-600 w-[350px]">
                         <Sidebar />
                     </div>
                     <div className=" overflow-y-auto p-10 text-gray-300 grid md:grid-cols-2 lg:grid-cols-3 h-fit  gap-4 w-full ">

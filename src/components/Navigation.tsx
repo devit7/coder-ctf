@@ -5,9 +5,9 @@ const Navigation = () => {
   return (
     <>
 
-      <nav className=" border-b border-dashed border-gray-700 fixed z-50 top-0 w-full md:px-16 px-4
+      <nav className=" border-b border-dashed border-gray-600 fixed z-50 top-0 w-full md:px-16 px-4
       items-center h-16   shadow-sm " role="navigation">
-        <div className="flex h-full border-dashed border-x border-gray-700 md:px-10 items-center gap-4 justify-between">
+        <div className="flex h-full border-dashed border-x border-gray-600 md:px-10 items-center gap-4 justify-between">
           <div className="text-xl font-bold">
             CODER-CTF
           </div>
