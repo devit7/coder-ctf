@@ -8,6 +8,8 @@ import Navigation from "./components/Navigation";
 import Layouts from '@/layouts/Layouts';
 import Challenges from './pages/Challenges';
 import Profile from "./pages/Profile";
+import User from "./pages/User";
+import Leaderboard from "./pages/Leaderboard";
 
 const App = () => {
   return (
@@ -15,6 +17,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layouts />} >
           <Route index element={<Home />} />
+          <Route path="user" element={<User />} />
+          <Route path="leaderboard" element={<Leaderboard />} />
           <Route path="challenges" element={<Challenges/>} />
           <Route path="profile" element={<Profile/>} />
         </Route >

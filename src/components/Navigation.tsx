@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
+import NavDropdown from './NavDropdown';
 
 const Navigation = () => {
   return (
@@ -19,14 +20,15 @@ const Navigation = () => {
           </div>
           <div className="flex gap-4 font-semibold text-lg">
             <Link to="/profile">
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <div>
                   Devit Erlingga A
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-4">
                   <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
-              </div>
+              </div> */}
+              <NavDropdown />
             </Link>
             {/* <Link to="/login">Login</Link>
           <Link to="/register">Register </Link> */}

@@ -4,6 +4,7 @@
 
 body {
   font-family: "Unifont";
+  background-color: #050516;
 }
 @layer base {
   :root {
