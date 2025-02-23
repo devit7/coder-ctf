@@ -1,13 +1,14 @@
 import React from "react";
 
 import Piechart from '@/components/Piechart';
-import Linechart from '../components/Linechart';
+import Linechart from '../components/LinechartLaderborad';
+import { Button } from '@/components/ui/button';
 
 
 const Profile = () => {
     return (
         <>
-            <div className="p-10  gap-10 justify-center h-full items-center grid grid-cols-3 ">
+            <div className="p-10 mx-auto gap-10 justify-center h-full items-center grid grid-cols-2 max-w-[900px] ">
                 <div className="flex  flex-col w-[400px] gap-4">
                     <img src="https://ui-avatars.com/api/?name=devit" alt="" className="rounded-md w-24 h-24" />
                     <h1 className=" font-semibold text-xl">Devit Erlingga</h1>
@@ -27,10 +28,11 @@ const Profile = () => {
                         <span>14</span>
                         <span className=" text-zinc-500">points</span>
                     </div>
+
                 </div>
-                <div className="">
+                {/* <div className="">
                     <Linechart />
-                </div>
+                </div> */}
                 <div>
                     <Piechart />
                 </div>

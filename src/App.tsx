@@ -10,6 +10,7 @@ import Challenges from './pages/Challenges';
 import Profile from "./pages/Profile";
 import User from "./pages/User";
 import Leaderboard from "./pages/Leaderboard";
+import ProfileSetting from "./pages/ProfileSetting";
 
 const App = () => {
   return (
@@ -19,8 +20,9 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="user" element={<User />} />
           <Route path="leaderboard" element={<Leaderboard />} />
-          <Route path="challenges" element={<Challenges/>} />
-          <Route path="profile" element={<Profile/>} />
+          <Route path="challenges" element={<Challenges />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="profile-setting" element={<ProfileSetting />} />
         </Route >
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

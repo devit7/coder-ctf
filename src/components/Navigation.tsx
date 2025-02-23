@@ -18,8 +18,8 @@ const Navigation = () => {
             <Link to="/leaderboard">Leaderboard</Link>
             <Link to="/challenges">Challenges</Link>
           </div>
-          <div className="flex gap-4 font-semibold text-lg">
-            <Link to="/profile">
+          <div className="flex cursor-pointer font-semibold text-lg">
+            
               {/* <div className="flex items-center gap-2">
                 <div>
                   Devit Erlingga A
@@ -28,8 +28,8 @@ const Navigation = () => {
                   <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               </div> */}
-              <NavDropdown />
-            </Link>
+              <NavDropdown  />
+            
             {/* <Link to="/login">Login</Link>
           <Link to="/register">Register </Link> */}
           </div>

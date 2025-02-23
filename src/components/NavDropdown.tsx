@@ -15,6 +15,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Settings, User } from "lucide-react";
+import { Link } from "react-router";
 const NavDropdown = () => {
     return (
         <>
@@ -26,17 +27,20 @@ const NavDropdown = () => {
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
-                        <DropdownMenuItem>
-                            <User />
-                            <span>Profile</span>
-                        </DropdownMenuItem>
-
-                        <DropdownMenuItem>
-                            <Settings />
-                            <span>Settings</span>
-                        </DropdownMenuItem>
+                        <Link to="/profile">
+                            <DropdownMenuItem >
+                                <User />
+                                <span >Profile</span>
+                            </DropdownMenuItem>
+                        </Link>
+                        <Link to="/profile-setting">
+                            <DropdownMenuItem>
+                                <Settings />
+                                <span>Settings</span>
+                            </DropdownMenuItem>
+                        </Link>
                     </DropdownMenuGroup>
-                    
+
                 </DropdownMenuContent>
             </DropdownMenu>
         </>
