@@ -115,7 +115,7 @@ const chartData = [
 const chartConfig = {
     desktop: {
         label: "Desktop",
-        color: "hsl(var(--chart-1))",
+        color: "#1105f0",
     },
 } satisfies ChartConfig
 const Linechart = () => {

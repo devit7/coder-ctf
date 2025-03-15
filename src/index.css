@@ -6,7 +6,7 @@ body {
   font-family: "Unifont";
   background-color: #050516;
 }
-@layer base {
+/* @layer base {
   :root {
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -22,7 +22,7 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
+} */
 
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -93,7 +93,7 @@ button:focus-visible {
   }
 }
  */
-@layer base {
+/* @layer base {
   :root {
     --radius: 0.5rem}
-}
+} */

@@ -4,7 +4,7 @@ const ChallList = () => {
     return (
         <>
             <Modal>
-                <div className="shadow-md shadow-gray-800 flex rounded-md cursor-pointer h-[150px] justify-between font-semibold flex-col p-4 border border-gray-500">
+                <div className="shadow-md shadow-gray-800 flex rounded-sm cursor-pointer h-[150px] justify-between font-semibold flex-col p-4 border border-gray-500">
                     <div>
                         <div className=" line-clamp-2 text-xl leading-5">
                             Web Exploit dwadwad dwadwa dwawad dwdad dwadad

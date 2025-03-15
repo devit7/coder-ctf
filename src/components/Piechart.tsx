@@ -30,23 +30,23 @@ const chartConfig = {
   },
   chrome: {
     label: "Chrome",
-    color: "hsl(var(--chart-1))",
+    color: "#4285f4",
   },
   safari: {
     label: "Safari",
-    color: "hsl(var(--chart-2))",
+    color: "#00796b",
   },
   firefox: {
     label: "Firefox",
-    color: "hsl(var(--chart-3))",
+    color: "#ff7043",
   },
   edge: {
     label: "Edge",
-    color: "hsl(var(--chart-4))",
+    color: "#5c6bc0",
   },
   other: {
     label: "Other",
-    color: "hsl(var(--chart-5))",
+    color: "#9e9e9e",
   },
 } satisfies ChartConfig
 
@@ -57,7 +57,7 @@ const Piechart = () => {
   }, [])
   return (
     <>
-      <Card className="flex flex-col  ">
+      <Card className="flex flex-col dark:bg-transparent border-none rounded-none">
         <CardHeader className="items-center pb-0">
           <CardTitle>Pie Chart - Donut with Text</CardTitle>
           <CardDescription>January - June 2024</CardDescription>

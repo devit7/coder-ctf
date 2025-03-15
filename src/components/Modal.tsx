@@ -29,14 +29,14 @@ const Modal: React.FC<ModalProps> = ({ children }) => {
             <DialogTrigger asChild>
                 {children}
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]  text-white">
+            <DialogContent className="sm:max-w-[525px]   text-white">
                 <Tabs className="">
-                    <TabsList className="w-full rounded-md">
+                    <TabsList className="w-full rounded-md ">
                         <TabsTrigger className="w-full rounded-md" value="chall">Chall</TabsTrigger>
                         <TabsTrigger className="w-full rounded-md" value="solve">Solve (12)</TabsTrigger>
                     </TabsList>
                     <TabsContent defaultChecked value="chall" >
-                        <div className="flex flex-col gap-4 mt-5 min-h-[200px]">
+                        <div className="flex flex-col gap-4 mt-10 min-h-[200px]">
                             <DialogHeader>
                                 <DialogTitle className=" text-2xl">Edit profile</DialogTitle>
                                 <div className="flex items-center gap-2 text-lg">

@@ -1,9 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+/* const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
+ */
 export default {
-    darkMode: ["class"],
+    darkMode: "class",
     content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
   	extend: {
@@ -15,6 +19,5 @@ export default {
   		colors: {},
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"),require('tailwind-scrollbar-hide')],
 }
-
