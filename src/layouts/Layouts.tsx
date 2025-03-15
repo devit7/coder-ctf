@@ -1,8 +1,7 @@
 import React from "react";
 import Navigation from "@/components/Navigation";
-import { type } from "os";
+
 import { Outlet } from "react-router";
-import { useEffect, useRef, useState } from "react";
 
 
 const Layouts: React.FC = () => {

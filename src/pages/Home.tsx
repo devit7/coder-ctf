@@ -1,8 +1,5 @@
 
 import Code from "@/components/Code";
-import React from "react";
-
-
 
 const Home = () => {
 

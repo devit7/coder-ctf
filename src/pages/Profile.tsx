@@ -1,8 +1,5 @@
-import React from "react";
 
 import Piechart from '@/components/Piechart';
-import Linechart from '../components/LinechartLaderborad';
-import { Button } from '@/components/ui/button';
 
 
 const Profile = () => {

@@ -1,4 +1,4 @@
-import React from "react";
+
 import Sidebar from '../components/Sidebar';
 import ChallList from "@/components/ChallList";
 const Challenges = () => {
