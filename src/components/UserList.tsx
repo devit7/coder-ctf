@@ -48,7 +48,7 @@ const UserList = () => {
         { id: 10, name: 'Jen Doe', score: 10, rank: 10 },
     ];
 
-    const [data, setData] = useState<DataRow[]>(initialData);
+    const [data] = useState<DataRow[]>(initialData);
     const [filteredData, setFilteredData] = useState<DataRow[]>(initialData);
 
     function handleFilter(event: React.ChangeEvent<HTMLInputElement>) {
