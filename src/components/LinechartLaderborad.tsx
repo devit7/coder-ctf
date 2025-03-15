@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Line, LineChart, CartesianGrid, XAxis } from "recharts"
 
 import {
@@ -117,9 +117,9 @@ const chartConfig = {
     },
 } satisfies ChartConfig
 const Linechart = () => {
-    const [timeRange, setTimeRange] = React.useState("90d")
+    /* const [timeRange, setTimeRange] = React.useState("90d") */
 
-    const filteredData = chartData.filter((item) => {
+   /*  const filteredData = chartData.filter((item) => {
         const date = new Date(item.date)
         const referenceDate = new Date("2024-06-30")
         let daysToSubtract = 90
@@ -131,7 +131,7 @@ const Linechart = () => {
         const startDate = new Date(referenceDate)
         startDate.setDate(startDate.getDate() - daysToSubtract)
         return date >= startDate
-    })
+    }) */
 
     return (<>
         <Card className=" dark:bg-transparent border-none rounded-none" >
