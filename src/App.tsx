@@ -9,6 +9,7 @@ import User from "./pages/User";
 import Leaderboard from "./pages/Leaderboard";
 import ProfileSetting from "./pages/ProfileSetting";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="profile" element={<Profile />} />
           <Route path="profile-setting" element={<ProfileSetting />} />
           <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
         </Route >
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
