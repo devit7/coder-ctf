@@ -3,21 +3,26 @@ import { useState } from 'react';
 import DataTable, { TableColumn, createTheme } from 'react-data-table-component';
 
 type DataRow = {
-    id: number;
+    no: number;
     name: string;
+    solved: number;
     score: number;
-    rank: number;
 };
 
 const columns: TableColumn<DataRow>[] = [
     {
-        name: 'Rank',
-        selector: row => row.rank,
+        name: 'No',
+        selector: row => row.no,
         sortable: true,
     },
     {
         name: 'Name',
         selector: row => row.name,
+        sortable: true,
+    },
+    {
+        name: 'Solved',
+        selector: row => row.solved,
         sortable: true,
     },
     {
@@ -34,19 +39,13 @@ createTheme('dark', {
     },
   });
 
-const TableLeaderboard = () => {
-    const initialData: DataRow[] = [
-        { id: 1, name: 'John Doe', score: 100, rank: 1 },
-        { id: 2, name: 'Jane Doe', score: 90, rank: 2 },
-        { id: 3, name: 'Jan Doe', score: 80, rank: 3 },
-        { id: 4, name: 'Jon Doe', score: 70, rank: 4 },
-        { id: 5, name: 'Jen Doe', score: 60, rank: 5 },
-        { id: 6, name: 'Jin Doe', score: 50, rank: 6 },
-        { id: 7, name: 'Jyn Doe', score: 40, rank: 7 },
-        { id: 8, name: 'Jen Doe', score: 30, rank: 8 },
-        { id: 9, name: 'Jen Doe', score: 20, rank: 9 },
-        { id: 10, name: 'Jen Doe', score: 10, rank: 10 },
-    ];
+const TableLeaderboard = ({dataLeaderboardApi}:{dataLeaderboardApi:any}) => {
+    const initialData: DataRow[] = dataLeaderboardApi.map((user: any, index: number) => ({
+        name: user.username,
+        solved: user.solved_count,
+        score: user.total_points || 0,
+        no: index + 1, // Add an ID property for each row
+    }));
 
     const [data] = useState<DataRow[]>(initialData);
     const [filteredData, setFilteredData] = useState<DataRow[]>(initialData);

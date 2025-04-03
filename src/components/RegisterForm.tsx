@@ -20,6 +20,9 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
+import { useRegisterApi } from "@/api/RegisterApi"
+import { useToast } from "@/hooks/use-toast"
+import ButtonLoading from "./ButtonLoading"
 
 const registerSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
@@ -30,7 +33,11 @@ const registerSchema = z.object({
         .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
         .regex(/[a-z]/, "Password must contain at least one lowercase letter")
         .regex(/[0-9]/, "Password must contain at least one number"),
+    password_confirmation: z.string(),
     institution: z.string().min(2, "Institution must be at least 2 characters"),
+}).refine((data) => data.password === data.password_confirmation, {
+    message: "Passwords don't match",
+    path: ["password_confirmation"],
 })
 
 type RegisterFormValues = z.infer<typeof registerSchema>
@@ -39,6 +46,7 @@ export function RegisterForm({
     className,
     ...props
 }: React.ComponentPropsWithoutRef<"div">) {
+
     const form = useForm<RegisterFormValues>({
         resolver: zodResolver(registerSchema),
         defaultValues: {
@@ -46,18 +54,57 @@ export function RegisterForm({
             username: "",
             email: "",
             password: "",
+            password_confirmation: "",
             institution: "",
         },
     })
+// Logic
+    const { toast } = useToast()
+    const { mutate, isPending} = useRegisterApi()
 
     const onSubmit = async (data: RegisterFormValues) => {
         // TODO: Implement registration logic
-        console.log(data)
+
+        mutate(data, {
+            onSuccess: (response) => {
+                //console.log("Success", response),
+                    toast({
+                        title: "Success",
+                        description: response.message,
+                        duration: 15000,
+                    })
+            },
+            onError: (error: any) => {
+                //console.log(error)
+/*                 toast({
+                    title: "Error",
+                    description: error.message,
+                }) */
+                const apiErrors = error.response?.data?.errors;
+
+                if (apiErrors) {
+                    Object.entries(apiErrors).forEach(([key, messages]) => {
+                      form.setError(key as keyof RegisterFormValues, {
+                        type: "manual",
+                        message: (messages as string[])[0],
+                      });
+                    });
+                  } else {
+                    toast({
+                      title: "Registrasi Gagal",
+                      description: "Terjadi kesalahan pada server.",
+                      variant: "destructive",
+                    });
+                  }
+            }
+        })
+        //console.log(data)
     }
+
 
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
-            <Card className="rounded-md dark:bg-transparent">
+            <Card className="rounded-md dark:bg-transparent ">
                 <CardHeader className="text-center">
                     <CardTitle className="text-2xl">Register</CardTitle>
                     <CardDescription>
@@ -72,7 +119,7 @@ export function RegisterForm({
                                 name="name"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Name</FormLabel>
+                                        <FormLabel>Full Name</FormLabel>
                                         <FormControl>
                                             <Input placeholder="Full name" {...field} />
                                         </FormControl>
@@ -121,6 +168,19 @@ export function RegisterForm({
                             />
                             <FormField
                                 control={form.control}
+                                name="password_confirmation"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Confirm Password</FormLabel>
+                                        <FormControl>
+                                            <Input type="password" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
                                 name="institution"
                                 render={({ field }) => (
                                     <FormItem>
@@ -132,9 +192,13 @@ export function RegisterForm({
                                     </FormItem>
                                 )}
                             />
-                            <Button type="submit" className="w-full">
-                                Register
-                            </Button>
+                            {
+                                isPending ? <ButtonLoading  />: 
+                                <Button type="submit" className="w-full">
+                                    Register
+                                </Button>
+                            }
+
                             <Button type="button" variant="outline" className="w-full">
                                 Register with Google
                             </Button>

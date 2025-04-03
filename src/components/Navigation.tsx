@@ -1,9 +1,14 @@
 
 import { Link } from "react-router";
 import NavDropdown from './NavDropdown';
+import { useAuth } from "@/auth/AuthContext";
+import { Skeleton } from '@/components/ui/skeleton';
 
 const Navigation = () => {
-  
+
+  const { isAuthenticated, user } = useAuth();
+
+
   return (
     <>
 
@@ -20,9 +25,17 @@ const Navigation = () => {
             <Link to="/challenges">Challenges</Link>
           </div>
           <div className="flex cursor-pointer font-semibold text-lg">
-              <NavDropdown  />
-            {/* <Link to="/login">Login</Link>
-          <Link to="/register">Register </Link> */}
+            {isAuthenticated ?
+              user ?
+              <NavDropdown fullName={user} /> 
+              :
+              <Skeleton className="h-5 w-20" />
+            :
+              <div className="flex gap-4">
+                <Link to="/login">Login</Link>
+                <Link to="/register">Register </Link>
+              </div>
+            }
           </div>
         </div>
       </nav>

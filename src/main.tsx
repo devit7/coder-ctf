@@ -8,9 +8,9 @@ import { BrowserRouter } from 'react-router'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="dark">
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <BrowserRouter>
-        <App />
+          <App />
       </BrowserRouter>
     </ThemeProvider>
   </StrictMode>,

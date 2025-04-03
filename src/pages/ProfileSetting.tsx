@@ -1,44 +1,18 @@
-
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { Button } from "@/components/ui/button"
-import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "../components/ui/textarea";
-
-const formSchema = z.object({
-    username: z.string().min(2, {
-        message: "Username must be at least 2 characters.",
-    }),
-    email: z.string().email({
-        message: "Please enter a valid email address.",
-    }),
-    descriptions: z.string().max(100, {
-        message: "Description must be at most 100 characters.",
-    }),
-})
-
+import { getUserAuth } from "@/api/UserApi"
+import { useQuery } from "@tanstack/react-query"
+import { Skeleton } from "@/components/ui/skeleton";
+import ProfileSettingForm from "@/components/ProfileSettingForm";
 
 
 const ProfileSetting = () => {
+    // get user by token
+    const { data, isLoading } = useQuery({
+        queryKey: ['myDataUserSetting'],
+        queryFn: getUserAuth,
+    });
 
-    const form = useForm({
-        resolver: zodResolver(formSchema),
-    })
+    //console.log(data, 'dataUserSetting');
 
-
-    const onSubmit = (data: any) => {
-        console.log(data)
-    }
     return (
         <>
             <div className="max-w-lg mx-auto ">
@@ -48,59 +22,16 @@ const ProfileSetting = () => {
                         Make changes to your profile here. Click save when you're done.
                     </p>
                 </div>
-                <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                        <FormField
-                            control={form.control}
-                            name="username"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Username</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="shadcn" {...field} />
-                                    </FormControl>
-                                    <FormDescription>
-                                        This is your public display name.
-                                    </FormDescription>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Email</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="shadcn" {...field} />
-                                    </FormControl>
-                                    <FormDescription>
-                                        This is your public display name.
-                                    </FormDescription>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="descriptions"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Bio</FormLabel>
-                                    <FormControl>
-                                        <Textarea placeholder="shadcn" {...field} />
-                                    </FormControl>
-                                    <FormDescription>
-                                        This is your public display name.
-                                    </FormDescription>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <Button type="submit">Submit</Button>
-                    </form>
-                </Form>
+                {isLoading ?
+                    <div className="flex flex-col gap-4">
+                        <Skeleton className="w-full h-32" />
+                        <Skeleton className="w-full h-32" />
+                        <Skeleton className="w-full h-32" />
+                        <Skeleton className="w-20 h-8" />
+                    </div>
+                    :
+                    <ProfileSettingForm dataSetting={data} />
+                }
             </div>
         </>
     );

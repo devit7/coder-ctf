@@ -1,6 +1,6 @@
 import React from "react";
-import { TrendingUp } from "lucide-react"
-import { Label, Pie, PieChart } from "recharts"
+import { TrendingUp } from "lucide-react";
+import { Label, Pie, PieChart } from "recharts";
 
 import {
   Card,
@@ -9,58 +9,37 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
-const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 190, fill: "var(--color-other)" },
-]
+} from "@/components/ui/chart";
 
-const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
-  chrome: {
-    label: "Chrome",
-    color: "#4285f4",
-  },
-  safari: {
-    label: "Safari",
-    color: "#00796b",
-  },
-  firefox: {
-    label: "Firefox",
-    color: "#ff7043",
-  },
-  edge: {
-    label: "Edge",
-    color: "#5c6bc0",
-  },
-  other: {
-    label: "Other",
-    color: "#9e9e9e",
-  },
-} satisfies ChartConfig
+const Piechart = ({ dataUserStatApi }: { dataUserStatApi: any }) => {
+  const chartData = React.useMemo(() => {
+    return Object.entries(dataUserStatApi.category_count).map(([name, value]) => ({
+      name,
+      value,
+      fill: `#${Math.floor(Math.random() * 16777215).toString(16)}`, // Generate random color
+    }));
+  }, [dataUserStatApi]);
 
+  const totalSolved = dataUserStatApi.total_solved;
 
-const Piechart = () => {
-  const totalVisitors = React.useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.visitors, 0)
-  }, [])
+  const chartConfig = {
+    value: {
+      label: "Solved",
+    },
+  } satisfies ChartConfig;
+
   return (
     <>
       <Card className="flex flex-col dark:bg-transparent border-none rounded-none">
         <CardHeader className="items-center pb-0">
-          <CardTitle>Pie Chart - Donut with Text</CardTitle>
-          <CardDescription>January - June 2024</CardDescription>
+          <CardTitle>User Chart - Stat</CardTitle>
+          <CardDescription>All Time</CardDescription>
         </CardHeader>
         <CardContent className="flex-1 pb-0">
           <ChartContainer
@@ -74,8 +53,8 @@ const Piechart = () => {
               />
               <Pie
                 data={chartData}
-                dataKey="visitors"
-                nameKey="browser"
+                dataKey="value"
+                nameKey="name"
                 innerRadius={60}
                 strokeWidth={5}
               >
@@ -94,17 +73,17 @@ const Piechart = () => {
                             y={viewBox.cy}
                             className="fill-foreground text-3xl font-bold"
                           >
-                            {totalVisitors.toLocaleString()}
+                            {totalSolved.toLocaleString()}
                           </tspan>
                           <tspan
                             x={viewBox.cx}
                             y={(viewBox.cy || 0) + 24}
                             className="fill-muted-foreground"
                           >
-                            Visitors
+                            Solved
                           </tspan>
                         </text>
-                      )
+                      );
                     }
                   }}
                 />
@@ -114,10 +93,10 @@ const Piechart = () => {
         </CardContent>
         <CardFooter className="flex-col gap-2 text-sm">
           <div className="flex items-center gap-2 font-medium leading-none">
-            Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+            Total Solved {dataUserStatApi.total_solved||0} <TrendingUp className="h-4 w-4" />
           </div>
           <div className="leading-none text-muted-foreground">
-            Showing total visitors for the last 6 months
+            Showing total all time solved challenges
           </div>
         </CardFooter>
       </Card>

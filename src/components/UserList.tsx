@@ -2,18 +2,20 @@ import React from "react";
 import { useState } from 'react';
 import DataTable, { TableColumn, createTheme } from 'react-data-table-component';
 
+
 type DataRow = {
-    id: number;
+    no: number; // Optional property for row number
     name: string;
-    score: number;
-    rank: number;
+    institution: string; // Optional property for institution
+    joindate: string; // Optional property for join date
 };
 
 const columns: TableColumn<DataRow>[] = [
     {
-        name: 'Rank',
-        selector: row => row.rank,
+        name: 'No',
+        selector: row => row.no,
         sortable: true,
+        width: '80px', // Set a fixed width for the No column
     },
     {
         name: 'Name',
@@ -21,8 +23,13 @@ const columns: TableColumn<DataRow>[] = [
         sortable: true,
     },
     {
-        name: 'Score',
-        selector: row => row.score,
+        name: 'Institution',
+        selector: row => row.institution,
+        sortable: true,
+    },
+    {
+        name: 'Join Date',
+        selector: row => row.joindate,
         sortable: true,
     },
     
@@ -34,19 +41,15 @@ createTheme('dark', {
     },
   });
 
-const UserList = () => {
-    const initialData: DataRow[] = [
-        { id: 1, name: 'John Doe', score: 100, rank: 1 },
-        { id: 2, name: 'Jane Doe', score: 90, rank: 2 },
-        { id: 3, name: 'Jan Doe', score: 80, rank: 3 },
-        { id: 4, name: 'Jon Doe', score: 70, rank: 4 },
-        { id: 5, name: 'Jen Doe', score: 60, rank: 5 },
-        { id: 6, name: 'Jin Doe', score: 50, rank: 6 },
-        { id: 7, name: 'Jyn Doe', score: 40, rank: 7 },
-        { id: 8, name: 'Jen Doe', score: 30, rank: 8 },
-        { id: 9, name: 'Jen Doe', score: 20, rank: 9 },
-        { id: 10, name: 'Jen Doe', score: 10, rank: 10 },
-    ];
+const UserList = ({dataUserApi}:{dataUserApi:any}) => {
+
+
+    const initialData: DataRow[] = dataUserApi.map((user: any, index: number) => ({
+        name: user.username,
+        institution: user.institution,
+        joindate: user.created_at,
+        no: index + 1, // Add an ID property for each row
+    }));
 
     const [data] = useState<DataRow[]>(initialData);
     const [filteredData, setFilteredData] = useState<DataRow[]>(initialData);

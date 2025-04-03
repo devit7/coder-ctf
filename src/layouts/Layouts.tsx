@@ -2,7 +2,7 @@ import React from "react";
 import Navigation from "@/components/Navigation";
 
 import { Outlet } from "react-router";
-
+import { Toaster } from "@/components/ui/toaster"
 
 const Layouts: React.FC = () => {
     return (
@@ -14,6 +14,7 @@ const Layouts: React.FC = () => {
                     <main className=" pt-16 h-screen scrollbar-hidden overflow-auto border-x border-dashed border-gray-600">
                         <Outlet />
                     </main>
+                    <Toaster />
                 </div>
             </div>
 

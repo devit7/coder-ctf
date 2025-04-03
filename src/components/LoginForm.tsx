@@ -20,6 +20,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
+import { useLoginApi } from "@/api/LoginApi"
+import { useToast } from "@/hooks/use-toast"
+import ButtonLoading from "./ButtonLoading"
+import { useAuth } from "@/auth/AuthContext"
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -32,7 +36,7 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-  
+
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -40,10 +44,62 @@ export function LoginForm({
       password: "",
     },
   })
+  // Logic
+  const { toast } = useToast()
+  const { mutate, isPending } = useLoginApi()
+  const { setIsAuthenticated, setUser } = useAuth();
 
   const onSubmit = async (data: LoginFormValues) => {
     // TODO: Implement login logic
-    console.log(data)
+    //console.log(data)
+
+
+    mutate(data, {
+      onSuccess: (response) => {
+        if (response.status) {
+          const { token } = response.data;
+
+          // Simpan token ke localStorage
+          localStorage.setItem("token", token);
+
+          toast({
+            title: "Login Berhasil",
+            description: "Selamat datang kembali!",
+          });
+          // Set user authenticated
+          setIsAuthenticated(true);
+          // Set user data
+          setUser(response.data.user.name);
+          //Redirect ke halaman challenges
+          //navigate("/challenges");
+        } else {
+          toast({
+            title: "Login Gagal",
+            description: response.message || "Login gagal.",
+            variant: "destructive",
+          });
+        }
+      },
+      onError: (error: any) => {
+        const apiErrors = error.response?.data?.errors;
+        //console.log("Error Login", error);
+        if (apiErrors) {
+          Object.entries(apiErrors).forEach(([key, messages]) => {
+            form.setError(key as keyof LoginFormValues, {
+              type: "manual",
+              message: (messages as string[])[0],
+            });
+          });
+        } else {
+          toast({
+            title: "Login Gagal",
+            description: error.response.data.message || "Terjadi kesalahan pada server.",
+            variant: "destructive",
+            duration: 10000,
+          });
+        }
+      }
+    });
   }
 
   return (
@@ -92,9 +148,12 @@ export function LoginForm({
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">
-                Login
-              </Button>
+              {
+                isPending ? <ButtonLoading /> :
+                  <Button type="submit" className="w-full">
+                    Login
+                  </Button>
+              }
               <Button type="button" variant="outline" className="w-full">
                 Login with Google
               </Button>
