@@ -11,7 +11,6 @@ const Login = () => {
     return <Navigate to="/challenges" replace />;
   }
 
-
   return (
     <>
     <div className="w-fit flex justify-center items-center mx-auto h-full">

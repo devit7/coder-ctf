@@ -6,9 +6,8 @@ import { axiosInstance } from "./axiosInstance";
 interface User {
     id: number;
     name: string;
+    username: string;
     email: string;
-    role: string;
-    status: string;
 }
 
 interface AuthContextType {
@@ -34,7 +33,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 .then((response) => {
                     setIsAuthenticated(true);
                     //console.log("User data:", response.data.data.user.name); // Log user data
-                    setUser(response.data.data.user.name); // Simpan data user ke state
+                    setUser(response.data.data.user.username); // Simpan data user ke state
                 })
                 .catch(() => {
                     //console.error("Error fetching user data:", data);

@@ -37,10 +37,12 @@ type DataChallApi = {
 const Modal: React.FC<ModalProps> = ({ children, dataChallApi }) => {
 
     const queryClient = useQueryClient();
-    const { mutate, isPending } = useFlagApi();
+    const { mutate, isPending, data: dataResponseFlag } = useFlagApi();
     const sanitizedHTMLDescription = DOMPurify.sanitize(dataChallApi.description);
     const [useFlagStatus, setUseFlagStatus] = useState<boolean>(false);
 
+    // Check if challenge is solved either by dataChallApi or by recent flag submission
+    const isSolved = dataChallApi.is_solved || (dataResponseFlag && dataResponseFlag.status === "correct");
 
     // Handle flag submission logic here
     const handleFlagSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -172,7 +174,7 @@ const Modal: React.FC<ModalProps> = ({ children, dataChallApi }) => {
 
                             <div className=" border-t border-gray-300 "></div>
                             {/* Flag Section */}
-                            {dataChallApi.is_solved ?
+                            {isSolved ?
                                 <div className="border py-1 px-2 text-green-400 bg-[#051C1B] rounded-md text-center border-green-400">
                                     Solved 🥳
                                 </div>
@@ -197,7 +199,7 @@ const Modal: React.FC<ModalProps> = ({ children, dataChallApi }) => {
                             }
 
                             {/* Flag Status */}
-                            {useFlagStatus && (
+                            {useFlagStatus && !isSolved && (
                                 <div className="border py-1 px-2 text-red-400 bg-[#1c0508] rounded-md text-center border-red-400">
                                     Failed 🤣
                                 </div>

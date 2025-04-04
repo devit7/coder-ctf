@@ -119,7 +119,7 @@ export function RegisterForm({
                                 name="name"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Full Name</FormLabel>
+                                        <FormLabel>FullName</FormLabel>
                                         <FormControl>
                                             <Input placeholder="Full name" {...field} />
                                         </FormControl>

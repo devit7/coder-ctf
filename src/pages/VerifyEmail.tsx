@@ -23,6 +23,7 @@ const VerifyEmail = () => {
     // get all url except hostname and pathname
     const urlforApi = `${import.meta.env.VITE_API_HOST_URL}/api/email/verify/${id}/${token}?expires=${expires}&signature=${signature}`;
 
+    // fetch
     const { data, isLoading, error } = useQuery({
         queryKey: ['myDataVerifyEmail'],
         queryFn: () => getVerifyEmail(urlforApi)
