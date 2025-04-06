@@ -2,7 +2,7 @@ import React from "react";
 import Linechart from "@/components/LinechartLaderborad";
 import TableLaderboard from "@/components/TableLaderboard";
 import { useQuery } from "@tanstack/react-query";
-import { getLeaderboard } from "@/api/LeaderboardApi";
+import { getLeaderboard, graphAllLeaderboardTop10 } from "@/api/LeaderboardApi";
 import { Skeleton } from "@/components/ui/skeleton";
 
 
@@ -13,11 +13,22 @@ const Laderboard: React.FC = () => {
     queryFn: getLeaderboard
   });
 
+  const { data: dataLeaderboardTop10, isLoading: isLoadingTop10 } = useQuery({
+    queryKey: ['myDataLeaderboardTop10'],
+    queryFn: graphAllLeaderboardTop10
+  });
 
   return (
     <div className="p-10 flex flex-col max-w-[1000px] mx-auto gap-10">
       <div className=" w-full ">
-        <Linechart />
+        {isLoadingTop10 ?
+          <div className="flex justify-between bg-transparent py-10">
+            <h1>List CODERZZ 🚩</h1>
+            <Skeleton className="h-8 w-40" />
+          </div>
+          :
+          <Linechart dataLTop10={dataLeaderboardTop10} />
+        }
       </div>
       {isLoading ?
         <div className="">
