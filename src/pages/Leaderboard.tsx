@@ -22,10 +22,7 @@ const Laderboard: React.FC = () => {
     <div className="p-10 flex flex-col max-w-[1000px] mx-auto gap-10">
       <div className=" w-full ">
         {isLoadingTop10 ?
-          <div className="flex justify-between bg-transparent py-10">
-            <h1>List CODERZZ 🚩</h1>
-            <Skeleton className="h-8 w-40" />
-          </div>
+            <Skeleton className="h-[200px] w-full" />
           :
           <Linechart dataLTop10={dataLeaderboardTop10} />
         }
