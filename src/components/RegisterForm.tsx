@@ -25,16 +25,26 @@ import { useToast } from "@/hooks/use-toast"
 import ButtonLoading from "./ButtonLoading"
 
 const registerSchema = z.object({
-    name: z.string().min(2, "Name must be at least 2 characters"),
-    username: z.string().min(2, "Username must be at least 2 characters"),
-    email: z.string().email("Invalid email address"),
+    name: z.string()
+        .min(2, "Name must be at least 2 characters")
+        .max(50, "Name cannot exceed 50 characters"),
+    username: z.string()
+        .min(2, "Username must be at least 2 characters")
+        .max(15, "Username cannot exceed 15 characters"),
+    email: z.string()
+        .email("Invalid email address")
+        .max(100, "Email cannot exceed 100 characters"),
     password: z.string()
         .min(8, "Password must be at least 8 characters")
+        .max(64, "Password cannot exceed 64 characters")
         .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
         .regex(/[a-z]/, "Password must contain at least one lowercase letter")
         .regex(/[0-9]/, "Password must contain at least one number"),
-    password_confirmation: z.string(),
-    institution: z.string().min(2, "Institution must be at least 2 characters"),
+    password_confirmation: z.string()
+        .max(64, "Password confirmation cannot exceed 64 characters"),
+    institution: z.string()
+        .min(2, "Institution must be at least 2 characters")
+        .max(100, "Institution cannot exceed 100 characters"),
 }).refine((data) => data.password === data.password_confirmation, {
     message: "Passwords don't match",
     path: ["password_confirmation"],
@@ -58,9 +68,9 @@ export function RegisterForm({
             institution: "",
         },
     })
-// Logic
+    // Logic
     const { toast } = useToast()
-    const { mutate, isPending} = useRegisterApi()
+    const { mutate, isPending } = useRegisterApi()
 
     const onSubmit = async (data: RegisterFormValues) => {
         // TODO: Implement registration logic
@@ -68,34 +78,34 @@ export function RegisterForm({
         mutate(data, {
             onSuccess: (response) => {
                 //console.log("Success", response),
-                    toast({
-                        title: "Success",
-                        description: response.message,
-                        duration: 15000,
-                    })
+                toast({
+                    title: "Success",
+                    description: response.message,
+                    duration: 15000,
+                })
             },
             onError: (error: any) => {
                 //console.log(error)
-/*                 toast({
-                    title: "Error",
-                    description: error.message,
-                }) */
+                /*                 toast({
+                                    title: "Error",
+                                    description: error.message,
+                                }) */
                 const apiErrors = error.response?.data?.errors;
 
                 if (apiErrors) {
                     Object.entries(apiErrors).forEach(([key, messages]) => {
-                      form.setError(key as keyof RegisterFormValues, {
-                        type: "manual",
-                        message: (messages as string[])[0],
-                      });
+                        form.setError(key as keyof RegisterFormValues, {
+                            type: "manual",
+                            message: (messages as string[])[0],
+                        });
                     });
-                  } else {
+                } else {
                     toast({
-                      title: "Registrasi Gagal",
-                      description: "Terjadi kesalahan pada server.",
-                      variant: "destructive",
+                        title: "Registrasi Gagal",
+                        description: "Terjadi kesalahan pada server.",
+                        variant: "destructive",
                     });
-                  }
+                }
             }
         })
         //console.log(data)
@@ -193,10 +203,10 @@ export function RegisterForm({
                                 )}
                             />
                             {
-                                isPending ? <ButtonLoading  />: 
-                                <Button type="submit" className="w-full">
-                                    Register
-                                </Button>
+                                isPending ? <ButtonLoading /> :
+                                    <Button type="submit" className="w-full">
+                                        Register
+                                    </Button>
                             }
 
                             <Button type="button" variant="outline" className="w-full">

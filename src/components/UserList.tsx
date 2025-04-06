@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from 'react';
 import DataTable, { TableColumn, createTheme } from 'react-data-table-component';
+import HandleFormatTime from './HandleFormatTime';
+
 
 
 type DataRow = {
@@ -29,7 +31,7 @@ const columns: TableColumn<DataRow>[] = [
     },
     {
         name: 'Join Date',
-        selector: row => row.joindate,
+        selector: row => HandleFormatTime(row.joindate),
         sortable: true,
     },
     
