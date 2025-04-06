@@ -14,6 +14,7 @@ const columns: TableColumn<DataRow>[] = [
         name: 'No',
         selector: row => row.no,
         sortable: true,
+        width: '80px', // Set a fixed width for the No column
     },
     {
         name: 'Name',
