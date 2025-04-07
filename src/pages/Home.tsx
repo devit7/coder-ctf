@@ -32,7 +32,7 @@ const Home = () => {
             </div>
             <div className="flex flex-row items-center mt-8 gap-4">
               <a
-                href="https://discord.gg/coderctf"
+                href="https://discord.gg/vvZVeVHq"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-indigo-800  text-white px-6 py-2 rounded-md hover:bg-indigo-600 transition-colors"
@@ -50,7 +50,7 @@ const Home = () => {
             </div>
             <span className="mt-1 text-xs text-gray-400">
               <span className="text-gray-300">Join our discord community for </span>
-              <a href="https://discord.gg/coderctf"
+              <a href="https://discord.gg/vvZVeVHq"
                 target="_blank"
                 rel="noopener noreferrer" className="text-blue-600 underline font-semibold">more information 💖</a>
             </span>
