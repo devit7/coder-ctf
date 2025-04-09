@@ -1,4 +1,3 @@
-
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 const Code = () => {
@@ -17,10 +16,28 @@ export default Code;
     <div className=" flex flex-col  items-end ">
       <div className="relative inline-flex group ">
         <div
-          className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#6044ff] via-[#5744ff] to-[#1800ee] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt">
+          className="absolute transition-all duration-1000 opacity-70 -inset-px rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"
+          style={{
+            background: 'linear-gradient(-45deg, #6044ff, #8044ff, #ff0099, #00bfff, #00ff8f, #ffea00)',
+            backgroundSize: '400% 400%',
+            animation: 'gradientAnimation 10s ease infinite'
+          }}>
+          <style>{`
+            @keyframes gradientAnimation {
+              0% {
+                background-position: 0% 50%;
+              }
+              50% {
+                background-position: 100% 50%;
+              }
+              100% {
+                background-position: 0% 50%;
+              }
+            }
+          `}</style>
         </div>
         <div className=" relative inline-flex w-fit flex-col overflow-hidden rounded-xl shadow-blue-900/50 shadow-lg bg-[#1d1f21] hover:shadow-xl transition duration-300 ease-in-out">
-          
+
           <div className="flex w-full  justify-between border-b border-gray-600 px-4 py-3 text-white text-xs items-center">
             <p className="text-sm">
               Code.tsx
