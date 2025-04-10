@@ -69,7 +69,7 @@ export function LoginForm({
           // Set user authenticated
           setIsAuthenticated(true);
           // Set user data
-          setUser(response.data.user.name);
+          setUser(response.data.user.username);
           //Redirect ke halaman challenges
           //navigate("/challenges");
         } else {
