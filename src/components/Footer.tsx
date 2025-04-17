@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
                             href="https://discord.gg/cSYWB25Y5v"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-indigo-600 text-white px-4 py-2  inline-block hover:bg-indigo-700 transition-colors"
+                            className="bg-indigo-600 text-white px-4 py-2  inline-block hover:bg-indigo-700 transition-colors shadow-[4px_4px_0px_0px_rgba(152,139,169,1)]"
                         >
                             Join Discord
                         </a>

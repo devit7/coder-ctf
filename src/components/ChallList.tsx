@@ -3,15 +3,15 @@ const ChallList = ({ dataChallApi }: { dataChallApi: any }) => {
     return (
         <>
             <Modal dataChallApi={dataChallApi}>
-                <div className={`shadow-md flex rounded-sm cursor-pointer h-[150px] 
+                <div className={` flex rounded-sm cursor-pointer h-[150px] hover:rotate-2 
         justify-between font-semibold flex-col p-4 border backdrop-blur-md 
         ${dataChallApi.is_solved
                         ? 'bg-green-950/40 border-green-500 shadow-green-800/50 hover:shadow-green-700/60'
                         : 'bg-gray-900/30 border-gray-500/70 shadow-gray-800/40 hover:shadow-gray-700/60'}`}
                     style={{
                         boxShadow: dataChallApi.is_solved
-                            ? '0 8px 32px rgba(0, 128, 0, 0.2)'
-                            : '0 8px 32px rgba(30, 41, 59, 0.2)',
+                            ? '0 8px 32px rgba(0, 128, 0, 0.3)'
+                            : '0 8px 32px rgba(30, 41, 59, 0.3)',
                         backdropFilter: 'blur(8px)',
                     }}
                 >

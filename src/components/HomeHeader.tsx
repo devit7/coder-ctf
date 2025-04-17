@@ -3,7 +3,7 @@ import Code from "./Code";
 const HomeHeader = () => {
     return (
         <>
-            <div className="grid grid-cols-1 md:grid-cols-2 ">
+            <div className="grid grid-cols-1 md:grid-cols-2  mt-16">
                 <div className=" flex flex-col justify-center items-start">
                     <span className=" font-semibold">
                         <span className=" text-blue-600">Hello,</span> Welcome to
@@ -33,7 +33,7 @@ const HomeHeader = () => {
                             href="https://discord.gg/cSYWB25Y5v"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-block bg-indigo-800  text-white px-6 py-2 rounded-md hover:bg-indigo-600 transition-colors"
+                            className="inline-block bg-indigo-800  text-white px-6 py-2 rounded-md hover:bg-indigo-600 transition-colors shadow-[4px_4px_0px_0px_rgba(152,139,169,1)]"
                         >
                             <div className="flex items-center space-x-2">
                                 <span>Join Discord</span>
@@ -42,7 +42,7 @@ const HomeHeader = () => {
                                 </svg>
                             </div>
                         </a>
-                        <button className="bg-gray-800 text-white px-6 py-2 rounded-md  hover:bg-gray-700 transition-colors">
+                        <button className="bg-gray-800 text-white px-6 py-2 rounded-md  hover:bg-gray-700 transition-colors shadow-[4px_4px_0px_0px_rgba(117,117,117,1)]">
                             Get Started
                         </button>
                     </div>

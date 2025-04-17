@@ -1,12 +1,13 @@
-
 const RulesSection = () => {
   return (
-    <div className="mt-16">
-      <h2 className="text-2xl font-semibold text-center mb-6">CTF Rules & Guidelines</h2>
-      
+    <div className="">
+      <div className="flex justify-center mt-32">
+        <h2 className="inline-block text-2xl font-black text-center mb-10 py-2 px-6 border-4 border-black bg-gray-500 text-black transform -rotate-1 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">CTF Rules & Guidelines</h2>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Rules */}
-        <div className="border border-gray-700 rounded-lg p-6 bg-opacity-30 bg-gray-900">
+        <div className="border border-gray-700 rounded-lg p-6 bg-opacity-30 bg-gray-900 hover:shadow-[6px_6px_0px_0px_rgba(28,0,67,1)]">
           <h3 className="text-xl font-semibold mb-4 text-blue-400 flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -48,7 +49,7 @@ const RulesSection = () => {
         </div>
 
         {/* Flag Format */}
-        <div className="border border-gray-700 rounded-lg p-6 bg-opacity-30 bg-gray-900">
+        <div className="border border-gray-700 rounded-lg p-6 bg-opacity-30 bg-gray-900 hover:shadow-[6px_6px_0px_0px_rgba(28,0,67,1)]">
           <h3 className="text-xl font-semibold mb-4 text-purple-400 flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" />
@@ -70,7 +71,7 @@ const RulesSection = () => {
             </div>
             <div className="mt-4 p-3 bg-blue-900 bg-opacity-30 border border-blue-700 rounded-md text-blue-200">
               <p className="text-sm">
-                <span className="font-semibold">Note:</span> Submit the entire flag including the CODER-CTF{} wrapper.
+                <span className="font-semibold">Note:</span> Submit the entire flag including the CODER-CTF{ } wrapper.
               </p>
             </div>
           </div>
