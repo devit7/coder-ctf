@@ -132,7 +132,11 @@ const Modal: React.FC<ModalProps> = ({ children, dataChallApi }) => {
                                         <div>
                                             {dataChallApi.total_solved}
                                         </div>
-                                        <div className=" px-1 text-sm bg-indigo-700">WEB</div>
+                                        <div className=" px-2 text-sm uppercase " style={{
+                                            backgroundColor: `${dataChallApi.category.color}80`,
+                                            backdropFilter: 'blur(4px)',
+                                            textShadow: '0 1px 2px rgba(0,0,0,0.2)'
+                                        }}>{dataChallApi.category.name}</div>
                                     </div>
                                     <div className="gap-2 text-sm text-gray-300">
                                         Author: <span className="text-red-500">{dataChallApi.author}</span>
