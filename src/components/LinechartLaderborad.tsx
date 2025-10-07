@@ -109,15 +109,21 @@ const Linechart = ({ dataLTop10 }: { dataLTop10: any }) => {
           </CardDescription>
 
           {/* Filter Bulan */}
-          <div className="flex justify-center mt-4">
+          <div className="flex justify-end mt-4">
             <select
               value={selectedMonth}
               onChange={(e) => setSelectedMonth(e.target.value)}
-              className="px-4 py-2 border rounded-md bg-background text-foreground"
+              className="px-4 py-2 border border-input rounded-md bg-background text-foreground shadow-sm hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 cursor-pointer transition-colors"
             >
-              <option value="all">All Months</option>
+              <option value="all" className="bg-background text-foreground">
+                All Months
+              </option>
               {availableMonths.map((month) => (
-                <option key={month} value={month}>
+                <option
+                  key={month}
+                  value={month}
+                  className="bg-background text-foreground"
+                >
                   {formatMonthDisplay(month)}
                 </option>
               ))}
