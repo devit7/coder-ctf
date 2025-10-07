@@ -113,16 +113,16 @@ const Linechart = ({ dataLTop10 }: { dataLTop10: any }) => {
             <select
               value={selectedMonth}
               onChange={(e) => setSelectedMonth(e.target.value)}
-              className="px-4 py-2 border border-input rounded-md bg-background text-foreground shadow-sm hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 cursor-pointer transition-colors"
+              className="px-4 py-2 border border-gray-300 rounded-md bg-transparent text-white shadow-sm hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 cursor-pointer transition-colors"
             >
-              <option value="all" className="bg-background text-foreground">
+              <option value="all" className="bg-transparent text-white">
                 All Months
               </option>
               {availableMonths.map((month) => (
                 <option
                   key={month}
                   value={month}
-                  className="bg-background text-foreground"
+                  className="bg-transparent text-white"
                 >
                   {formatMonthDisplay(month)}
                 </option>
